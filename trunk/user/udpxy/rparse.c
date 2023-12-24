@@ -173,7 +173,7 @@ parse_udprelay( const char*  opt, size_t optlen,
 
     assert( opt && addr && addrlen && port );
 
-    (void) strncpy( s, opt, MAX_OPTLEN );
+    (void) strncpy( s, opt, MAX_OPTLEN - 1 );
     s[ MAX_OPTLEN - 1 ] = '\0';
     do {
         n = strcspn( s, SEP );
