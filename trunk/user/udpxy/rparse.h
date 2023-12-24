@@ -80,7 +80,6 @@ parse_param( const char* s, size_t slen,
  */
 int
 parse_udprelay( const char* opt, size_t optlen,
-                char* s_addr,       size_t s_addrlen,
                 char* addr, size_t addrlen,
                 uint16_t*       port );
 

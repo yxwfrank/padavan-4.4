@@ -40,8 +40,7 @@ setup_listener( const char* ipaddr, int port, int* sockfd, int bklog );
  *
  */
 int
-setup_mcast_listener( struct sockaddr_in*   s_address,
-                      struct sockaddr_in*   m_address,
+setup_mcast_listener( struct sockaddr_in*   sa,
                       const struct in_addr* mifaddr,
                       int*                  mcastfd,
                       int                   sockbuflen );
@@ -51,20 +50,20 @@ setup_mcast_listener( struct sockaddr_in*   s_address,
  *
  */
 void
-close_mcast_listener( int msockfd, const struct in_addr* mifaddr, const struct in_addr* s_in_addr );
+close_mcast_listener( int msockfd, const struct in_addr* mifaddr );
 
 
 /* add or drop membership in a multicast group
  */
 int
 set_multicast( int msockfd, const struct in_addr* mifaddr,
-               const struct in_addr* s_in_addr, char* opname );
+               int opname );
 
 
 /* drop from and add into a multicast group
  */
 int
-renew_multicast( int msockfd, const struct in_addr* mifaddr, const struct in_addr* s_in_addr);
+renew_multicast( int msockfd, const struct in_addr* mifaddr );
 
 
 /* set send/receive timeouts on socket(s)

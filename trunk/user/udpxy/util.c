@@ -856,6 +856,19 @@ a2double( const char* str, double* pval )
 
 
 int
+a2size( const char* str, ssize_t* pval )
+{
+    int64_t n64 = 0;
+    int rc = a2int64(str, &n64);
+
+    if (pval && 0 == rc) {
+        *pval = (ssize_t)n64;
+    }
+
+    return rc;
+}
+
+int
 a2int64( const char* str, int64_t* pval )
 {
     double dval = 0.0;
@@ -874,21 +887,6 @@ a2int64( const char* str, int64_t* pval )
 
     return rc;
 }
-
-
-int
-a2size( const char* str, ssize_t* pval )
-{
-    int64_t n64 = 0;
-    int rc = a2int64(str, &n64);
-
-    if (pval && 0 == rc) {
-        *pval = (ssize_t)n64;
-    }
-
-    return rc;
-}
-
 
 /* returns asctime w/o CR character at the end
  */
@@ -1073,6 +1071,7 @@ get_sysinfo (int* perr)
     if (perr) *perr = errno;
 
     if (0 == rc) {
+        s_sysinfo [sizeof(s_sysinfo)-1] = '\0';
         (void) snprintf (s_sysinfo, sizeof(s_sysinfo)-1, "%s %s %s",
             uts.sysname, uts.release, uts.machine);
     }
