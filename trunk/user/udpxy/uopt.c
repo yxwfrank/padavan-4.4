@@ -160,8 +160,6 @@ init_recopt( struct udpxrec_opt* ro )
 
     ro->rcv_tmout       = 0;
 
-    ro->mcast_refresh   = DEFAULT_MCAST_REFRESH;
-
     return rc;
 }
 
