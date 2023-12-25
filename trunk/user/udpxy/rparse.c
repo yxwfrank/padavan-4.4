@@ -126,7 +126,7 @@ parse_param( const char* s, size_t slen,
     /* look for '?' separating options from tail */
     n = strcspn(s + i, "?");
     if (n < optlen) {
-        (void) strncpy( opt, s + i, n - 1 );
+        (void) strncpy( opt, s + i, n );
         opt[n] = '\0';
     }
     else
